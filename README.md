@@ -1,6 +1,6 @@
 # K Util
 
-This was made to free up space for Kaltura accounts by removing Source files from Media entries with flavors.
+This was made to free up space for Kaltura accounts by checking Media Entities for Source Flavor Assets and removing them.
 
 ## Requirements
 
