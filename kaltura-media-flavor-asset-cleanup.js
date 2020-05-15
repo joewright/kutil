@@ -108,7 +108,6 @@ async function processMediaPage(pageNumber) {
 
 					// make the request to remove the Source asset
 					logg(`Deleting entity ${id} flavor asset ${flavor.id}`);
-					await sleep(5000);
 					const flavorRes = await KUtil.makeRequest(KUtil.kaltura.flavorAssetDelete, {
 						method: 'POST',
 						form: {
@@ -116,7 +115,6 @@ async function processMediaPage(pageNumber) {
 							id: flavor.id
 						}
 					});
-					console.log(flavorRes);
 					logg('Waiting 1 second before deleting the next media flavor asset');
 					await sleep(1000);
 				}
