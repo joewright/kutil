@@ -7,7 +7,9 @@ const readline = require('readline');
 const xml2js = require('xml2js');
 const KUtil = require('./kutil');
 const CONF = require('./config.json');
+
 const MEDIA_PAGE_SIZE = 50;
+const DELETE_WAIT_TIME_MS = 500;
 
 // disable all delete operations
 let DRY_RUN = true;
@@ -45,7 +47,7 @@ async function processMediaPage(pageNumber) {
 	if (endIndex > total) {
 		endIndex = total;
 	}
-	logg(`Cleaning up assets for media entities ${startIndex} through ${endIndex}`);
+	logg(`Cleaning up assets for media entities ${startIndex} through ${endIndex} out of ${total}`);
 	
 	if (Array.isArray(entities)) {
 		entities = entities;
@@ -116,7 +118,7 @@ async function processMediaPage(pageNumber) {
 						}
 					});
 					logg('Waiting 1 second before deleting the next media flavor asset');
-					await sleep(1000);
+					await sleep(DELETE_WAIT_TIME_MS);
 				}
 			}
 		}
